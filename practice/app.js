@@ -30,11 +30,12 @@ const data = {
 const Item = ({ user }) => (
   <div className="userInfo">
     <h1>{user.name}</h1>
-    <p>Informacje o użytkowniku</p>
-    <p>Wiek użytkownika: <strong>{user.age}</strong></p>
-    <p>Płeć użytkownika: {user.sex}</p>
+    <p>User Information</p>
+    <p>User age: <strong>{user.age}</strong></p>
+    <p>User gender: {user.sex}</p>
   </div>
 )
+
 class ListItems extends React.Component {
   state = {
     select: "all"
@@ -57,22 +58,15 @@ class ListItems extends React.Component {
         return users.map(user => <Item user={user} key={user.id} />)
 
       case "male":
-        users = users.filter(user => user.sex === "male")
+        users = users.filter(user => user.sex === "male");
         return users.map(user => <Item user={user} key={user.id} />)
 
       default:
         return "coś się zepsuło"
     }
-
-
-
-
-    return users;
   }
 
   render() {
-
-
     return (
       <div>
         <button onClick={this.handleUsersFilter.bind(this, "all")}>Everybody</button>
@@ -84,4 +78,4 @@ class ListItems extends React.Component {
   }
 }
 
-ReactDOM.render(<ListItems data={data} />, document.getElementById('root'))
+ReactDOM.render(<ListItems data={data} />, document.getElementById('root'));
